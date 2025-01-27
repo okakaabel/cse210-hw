@@ -32,6 +32,22 @@ public class Scripture
         }
     }
 
+    // Show a hint by revealing a random hidden word
+    public void ShowHint()
+    {
+        List<Word> hiddenWords = _words.Where(w => w.IsHidden()).ToList();
+        if (hiddenWords.Count > 0)
+        {
+            int index = _random.Next(hiddenWords.Count);
+            hiddenWords[index].Reveal();
+            Console.WriteLine("Hint: A word has been revealed!");
+        }
+        else
+        {
+            Console.WriteLine("No hidden words left to reveal.");
+        }
+    }
+
     // Get the display text for the entire scripture: reference + words
     public string GetDisplayText()
     {

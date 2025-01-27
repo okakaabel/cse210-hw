@@ -16,6 +16,12 @@ public class Word
         _isHidden = true;
     }
 
+    // Reveal the word (set the hidden state to false)
+    public void Reveal()
+    {
+        _isHidden = false;
+    }
+
     // Check if the word is hidden
     public bool IsHidden()
     {
