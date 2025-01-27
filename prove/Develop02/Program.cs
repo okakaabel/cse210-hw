@@ -43,7 +43,7 @@ internal class Program
                     break;
                 
                 case "5":
-                    Console.Write("\nEnter the prompt you want to search for: ");
+                    Console.Write("\nEnter the prompt or word you want to search for: ");
                     string searchTerm = Console.ReadLine();
                     myJournal.SearchEntries(searchTerm);
                     break;
