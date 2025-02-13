@@ -12,7 +12,7 @@ public class Scripture
     public Scripture(Reference reference, string text)
     {
         _reference = reference;
-        _words = text.Split(' ').Select(word => new Word(word)).ToList();
+        _words = text.Split(' ').Select(static word => new Word(word)).ToList();
         _random = new Random();
     }
 
@@ -23,7 +23,7 @@ public class Scripture
         while (wordsHidden < numberToHide && !IsCompletelyHidden())
         {
             // Get random word that isn't already hidden
-            List<Word> visibleWords = _words.Where(w => !w.IsHidden()).ToList();
+            List<Word> visibleWords = _words.Where(static w => !w.IsHidden()).ToList();
             if (visibleWords.Count == 0) break;
 
             int index = _random.Next(visibleWords.Count);
@@ -35,7 +35,7 @@ public class Scripture
     // Show a hint by revealing a random hidden word
     public void ShowHint()
     {
-        List<Word> hiddenWords = _words.Where(w => w.IsHidden()).ToList();
+        List<Word> hiddenWords = _words.Where(static w => w.IsHidden()).ToList();
         if (hiddenWords.Count > 0)
         {
             int index = _random.Next(hiddenWords.Count);
@@ -52,13 +52,13 @@ public class Scripture
     public string GetDisplayText()
     {
         string reference = _reference.GetDisplayText();
-        string words = string.Join(" ", _words.Select(w => w.GetDisplayText()));
+        string words = string.Join(" ", _words.Select(static w => w.GetDisplayText()));
         return $"{reference}\n{words}";
     }
 
     // Check if all words are hidden
     public bool IsCompletelyHidden()
     {
-        return _words.All(w => w.IsHidden());
+        return _words.All(static w => w.IsHidden());
     }
 }
